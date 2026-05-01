@@ -1,22 +1,39 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Layout from './pages/Layout';
+import Home from './pages/Home';
+import Page404 from './pages/Page404';
+import About from './pages/About';
+import Services from './pages/Services';
 
 function App() {
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const finalText = `${name} ${surname}`.trim();
+  // const [name, setName] = useState('');
+  // const [surname, setSurname] = useState('');
+  // const finalText = `${name} ${surname}`.trim();
 
-  function updateName(event) {
-    setName(event.target.value);
-  }
-    function updateSurname(event) {
-    setSurname(event.target.value);
-  }
+  // function updateName(event) {
+  //   setName(event.target.value);
+  // }
+  //   function updateSurname(event) {
+  //   setSurname(event.target.value);
+  // }
 
   return (
     <div className="App">
-      <div className="form">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<Page404 />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+
+      {/* <div className="form">
         Forma
         <div className="input_line">
           <label htmlFor="name">Name</label>
@@ -31,7 +48,7 @@ function App() {
       <div>Preview ...
 
         <p> You entered: "{finalText}"</p>
-      </div>
+      </div> */}
     </div>
   );
 }
