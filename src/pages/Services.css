@@ -1,0 +1,14 @@
+.services {
+  background-color: aquamarine;
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+  }
+}
